@@ -5,8 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chart"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        Title="MainWindow">
+    <Window.Resources>
+        <Style x:Key="SummaryChartAxisStyle"        TargetType="{x:Type chartingToolkit:AxisLabel}">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="5,0,10,0" />
+        </Style>
+    </Window.Resources>
+    <Grid
+                                                                                                                                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <chartingToolkit:Chart x:Name="chtSummary" Width="770" Height="400" Title="My Chart Title">
+            <chartingToolkit:Chart.TitleStyle>
+                <Style TargetType="visualizationToolkit:Title">
+                    <Setter Property="FontSize" Value="28" />
+                    <Setter Property="FontFamily" Value="Arial" />
+                    <Setter Property="Margin" Value="5, 10, 5, 15" />
+                </Style>
+            </chartingToolkit:Chart.TitleStyle>
+            <chartingToolkit:Chart.LegendStyle>
+                <Style TargetType="visualizationToolkit:Legend">
+                    <Setter Property="Width" Value="0" />
+                </Style>
+            </chartingToolkit:Chart.LegendStyle>
+            <chartingToolkit:Chart.Series>
+                <chartingToolkit:BarSeries ItemsSource="{Binding}" DependentValuePath="Value" IndependentValuePath="Key" IsSelectionEnabled="True" >
+                    <chartingToolkit:BarSeries.IndependentAxis>
+                        <chartingToolkit:CategoryAxis Orientation="Y" AxisLabelStyle="{StaticResource SummaryChartAxisStyle}" />
+                    </chartingToolkit:BarSeries.IndependentAxis>
+                </chartingToolkit:BarSeries>
+            </chartingToolkit:Chart.Series>
+        </chartingToolkit:Chart>
     </Grid>
 </Window>
