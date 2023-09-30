@@ -20,15 +20,15 @@ namespace Chart
     /// </summary>
     public partial class MainWindow : Window
     {
-        PodatociMVVM podatoci;
+        ChartDataMVVM chartData;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            podatoci = new PodatociMVVM();
+            chartData = new ChartDataMVVM();
 
-            DataContext = podatoci;
+            DataContext = chartData;
         }
     }
 }

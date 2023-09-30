@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chart
 {
-    public class PodatociMVVM: Notifier
+    public class ChartDataMVVM: Notifier
     {
         private ObservableCollection<Item> _items;
         public ObservableCollection<Item> Items
@@ -23,7 +23,7 @@ namespace Chart
             }
         }
 
-        public PodatociMVVM()
+        public ChartDataMVVM()
         {
             Items = new ObservableCollection<Item>();
 

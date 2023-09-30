@@ -9,7 +9,7 @@
         xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         Title="MainWindow">
     <Window.DataContext>
-        <local:PodatociMVVM/>
+        <local:ChartDataMVVM/>
     </Window.DataContext>
     <Window.Resources>
         <Style x:Key="SummaryChartAxisStyle" TargetType="{x:Type chartingToolkit:AxisLabel}">
