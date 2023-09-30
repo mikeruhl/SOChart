@@ -29,14 +29,6 @@ namespace Chart
             podatoci = new PodatociMVVM();
 
             DataContext = podatoci;
-
-            Item item = new Item { Col = "Col1", Value = 100};
-            Item item2 = new Item { Col = "Col2", Value = 123 };
-            Item item3 = new Item { Col = "Col3", Value = 78 };
-
-            chtSummary.Series.Add(item);
-            chtSummary.Series.Add(item2);
-            chtSummary.Series.Add(item3);
         }
     }
 }

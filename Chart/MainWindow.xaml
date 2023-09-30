@@ -19,28 +19,75 @@
             <Setter Property="Margin" Value="5,0,10,0" />
         </Style>
     </Window.Resources>
-    <Grid
-                                                                                                                                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <chartingToolkit:Chart x:Name="chtSummary" Width="770" Height="400" Title="My Chart Title">
-            <chartingToolkit:Chart.TitleStyle>
-                <Style TargetType="visualizationToolkit:Title">
-                    <Setter Property="FontSize" Value="28" />
-                    <Setter Property="FontFamily" Value="Arial" />
-                    <Setter Property="Margin" Value="5, 10, 5, 15" />
-                </Style>
-            </chartingToolkit:Chart.TitleStyle>
-            <chartingToolkit:Chart.LegendStyle>
-                <Style TargetType="visualizationToolkit:Legend">
-                    <Setter Property="Width" Value="0" />
-                </Style>
-            </chartingToolkit:Chart.LegendStyle>
-            <chartingToolkit:Chart.Series>
-                <chartingToolkit:BarSeries ItemsSource="{Binding}" DependentValuePath="Value" IndependentValuePath="Key" IsSelectionEnabled="True" >
-                    <chartingToolkit:BarSeries.IndependentAxis>
-                        <chartingToolkit:CategoryAxis Orientation="Y" AxisLabelStyle="{StaticResource SummaryChartAxisStyle}" />
-                    </chartingToolkit:BarSeries.IndependentAxis>
-                </chartingToolkit:BarSeries>
-            </chartingToolkit:Chart.Series>
-        </chartingToolkit:Chart>
+    <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TabControl>
+            <TabItem Header="Example 1 - Bars">
+                <chartingToolkit:Chart Grid.Row="0" x:Name="chtSummary" Width="770" Height="400" Title="My Chart Title">
+                    <chartingToolkit:Chart.TitleStyle>
+                        <Style TargetType="visualizationToolkit:Title">
+                            <Setter Property="FontSize" Value="28" />
+                            <Setter Property="FontFamily" Value="Arial" />
+                            <Setter Property="Margin" Value="5, 10, 5, 15" />
+                        </Style>
+                    </chartingToolkit:Chart.TitleStyle>
+                    <chartingToolkit:Chart.LegendStyle>
+                        <Style TargetType="visualizationToolkit:Legend">
+                            <Setter Property="Width" Value="0" />
+                        </Style>
+                    </chartingToolkit:Chart.LegendStyle>
+                    <chartingToolkit:Chart.Series>
+                        <chartingToolkit:BarSeries ItemsSource="{Binding Items}" DependentValuePath="Value" IndependentValuePath="Col" IsSelectionEnabled="True" >
+                            <chartingToolkit:BarSeries.IndependentAxis>
+                                <chartingToolkit:CategoryAxis Orientation="Y" AxisLabelStyle="{StaticResource SummaryChartAxisStyle}" />
+                            </chartingToolkit:BarSeries.IndependentAxis>
+                        </chartingToolkit:BarSeries>
+                    </chartingToolkit:Chart.Series>
+                </chartingToolkit:Chart>
+            </TabItem>
+
+            <TabItem Header="Example 2 - Lines">
+                <chartingToolkit:Chart Grid.Row="1">
+                    <chartingToolkit:Chart.Axes>
+                        <chartingToolkit:CategoryAxis Orientation="X">
+                            <chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                <Style x:Name="labelStyleX1" TargetType="Control">
+                                    <Setter Property="FontSize" Value="15"/>
+                                    <Setter Property="LayoutTransform" >
+                                        <Setter.Value>
+                                            <RotateTransform  Angle="-45" />
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                </Style>
+                            </chartingToolkit:CategoryAxis.AxisLabelStyle>
+                        </chartingToolkit:CategoryAxis>
+                    </chartingToolkit:Chart.Axes>
+                    <chartingToolkit:Chart.Series>
+                        <chartingToolkit:ColumnSeries ItemsSource="{Binding Items}"   
+                          DependentValuePath="Value"   
+                          IndependentValuePath="Col">
+                            <chartingToolkit:ColumnSeries.LegendItemStyle >
+                                <Style TargetType="chartingToolkit:LegendItem">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Style>
+                            </chartingToolkit:ColumnSeries.LegendItemStyle>
+                            <chartingToolkit:ColumnSeries.DependentRangeAxis>
+                                <chartingToolkit:LinearAxis Minimum="0" Maximum="200000" Orientation="Y"/>
+                            </chartingToolkit:ColumnSeries.DependentRangeAxis>
+                        </chartingToolkit:ColumnSeries>
+                        <chartingToolkit:LineSeries ItemsSource="{Binding Items}"   
+                          DependentValuePath="Value"   
+                          IndependentValuePath="Col">
+                            <chartingToolkit:LineSeries.LegendItemStyle >
+                                <Style TargetType="chartingToolkit:LegendItem">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Style>
+                            </chartingToolkit:LineSeries.LegendItemStyle>
+                        </chartingToolkit:LineSeries>
+                    </chartingToolkit:Chart.Series>
+                </chartingToolkit:Chart>
+            </TabItem>
+        </TabControl>
+        
     </Grid>
 </Window>
