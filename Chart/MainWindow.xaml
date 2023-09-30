@@ -22,7 +22,7 @@
     <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TabControl>
             <TabItem Header="Example 1 - Bars">
-                <chartingToolkit:Chart Grid.Row="0" x:Name="chtSummary" Width="770" Height="400" Title="My Chart Title">
+                <chartingToolkit:Chart x:Name="chtSummary" Width="770" Height="400" Title="My Chart Title">
                     <chartingToolkit:Chart.TitleStyle>
                         <Style TargetType="visualizationToolkit:Title">
                             <Setter Property="FontSize" Value="28" />
@@ -46,7 +46,7 @@
             </TabItem>
 
             <TabItem Header="Example 2 - Lines">
-                <chartingToolkit:Chart Grid.Row="1">
+                <chartingToolkit:Chart>
                     <chartingToolkit:Chart.Axes>
                         <chartingToolkit:CategoryAxis Orientation="X">
                             <chartingToolkit:CategoryAxis.AxisLabelStyle>
@@ -89,7 +89,8 @@
             </TabItem>
 
             <TabItem Header="Workload">
-                <chartingToolkit:Chart Grid.Row="1">
+                <chartingToolkit:Chart>
+                    
                     <chartingToolkit:Chart.Axes>
                         <chartingToolkit:CategoryAxis Orientation="X">
                             <chartingToolkit:CategoryAxis.AxisLabelStyle>
@@ -105,22 +106,26 @@
                             </chartingToolkit:CategoryAxis.AxisLabelStyle>
                         </chartingToolkit:CategoryAxis>
                     </chartingToolkit:Chart.Axes>
+                    <chartingToolkit:Chart.LegendStyle>
+                        <Style TargetType="visualizationToolkit:Legend">
+                            <Setter Property="Width" Value="1" />
+                        </Style>
+                    </chartingToolkit:Chart.LegendStyle>
                     <chartingToolkit:Chart.Series>
-                        <chartingToolkit:ColumnSeries ItemsSource="{Binding Items}"   
+
+                        <chartingToolkit:LineSeries ItemsSource="{Binding RealWorkloadItems}"   
                           DependentValuePath="Value"   
-                          IndependentValuePath="Col">
-                            <chartingToolkit:ColumnSeries.LegendItemStyle >
+                          IndependentValuePath="Month">
+                            <chartingToolkit:LineSeries.LegendItemStyle >
                                 <Style TargetType="chartingToolkit:LegendItem">
                                     <Setter Property="Visibility" Value="Collapsed"/>
                                 </Style>
-                            </chartingToolkit:ColumnSeries.LegendItemStyle>
-                            <chartingToolkit:ColumnSeries.DependentRangeAxis>
-                                <chartingToolkit:LinearAxis Minimum="0" Maximum="200000" Orientation="Y"/>
-                            </chartingToolkit:ColumnSeries.DependentRangeAxis>
-                        </chartingToolkit:ColumnSeries>
-                        <chartingToolkit:LineSeries ItemsSource="{Binding Items}"   
+                            </chartingToolkit:LineSeries.LegendItemStyle>
+                        </chartingToolkit:LineSeries>
+
+                        <chartingToolkit:LineSeries ItemsSource="{Binding PlannedWorkloadItems}"   
                           DependentValuePath="Value"   
-                          IndependentValuePath="Col">
+                          IndependentValuePath="Month">
                             <chartingToolkit:LineSeries.LegendItemStyle >
                                 <Style TargetType="chartingToolkit:LegendItem">
                                     <Setter Property="Visibility" Value="Collapsed"/>
