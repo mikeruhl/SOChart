@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Chart"
+        xmlns:local="clr-namespace:Chart.Code"
         mc:Ignorable="d"
         xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
@@ -51,6 +51,49 @@
                         <chartingToolkit:CategoryAxis Orientation="X">
                             <chartingToolkit:CategoryAxis.AxisLabelStyle>
                                 <Style x:Name="labelStyleX1" TargetType="Control">
+                                    <Setter Property="FontSize" Value="15"/>
+                                    <Setter Property="LayoutTransform" >
+                                        <Setter.Value>
+                                            <RotateTransform  Angle="-45" />
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                </Style>
+                            </chartingToolkit:CategoryAxis.AxisLabelStyle>
+                        </chartingToolkit:CategoryAxis>
+                    </chartingToolkit:Chart.Axes>
+                    <chartingToolkit:Chart.Series>
+                        <chartingToolkit:ColumnSeries ItemsSource="{Binding Items}"   
+                          DependentValuePath="Value"   
+                          IndependentValuePath="Col">
+                            <chartingToolkit:ColumnSeries.LegendItemStyle >
+                                <Style TargetType="chartingToolkit:LegendItem">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Style>
+                            </chartingToolkit:ColumnSeries.LegendItemStyle>
+                            <chartingToolkit:ColumnSeries.DependentRangeAxis>
+                                <chartingToolkit:LinearAxis Minimum="0" Maximum="200000" Orientation="Y"/>
+                            </chartingToolkit:ColumnSeries.DependentRangeAxis>
+                        </chartingToolkit:ColumnSeries>
+                        <chartingToolkit:LineSeries ItemsSource="{Binding Items}"   
+                          DependentValuePath="Value"   
+                          IndependentValuePath="Col">
+                            <chartingToolkit:LineSeries.LegendItemStyle >
+                                <Style TargetType="chartingToolkit:LegendItem">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Style>
+                            </chartingToolkit:LineSeries.LegendItemStyle>
+                        </chartingToolkit:LineSeries>
+                    </chartingToolkit:Chart.Series>
+                </chartingToolkit:Chart>
+            </TabItem>
+
+            <TabItem Header="Workload">
+                <chartingToolkit:Chart Grid.Row="1">
+                    <chartingToolkit:Chart.Axes>
+                        <chartingToolkit:CategoryAxis Orientation="X">
+                            <chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                <Style x:Name="labelStyleX2" TargetType="Control">
                                     <Setter Property="FontSize" Value="15"/>
                                     <Setter Property="LayoutTransform" >
                                         <Setter.Value>

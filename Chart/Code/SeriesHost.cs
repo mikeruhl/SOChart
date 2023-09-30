@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.DataVisualization.Charting;
 
-namespace Chart
+namespace Chart.Code
 {
     public class SeriesHost : Notifier, ISeriesHost
     {

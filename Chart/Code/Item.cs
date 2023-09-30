@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls.DataVisualization.Charting;
 
-namespace Chart
+namespace Chart.Code
 {
     public class Item : Notifier, System.Windows.Controls.DataVisualization.Charting.ISeries
     {

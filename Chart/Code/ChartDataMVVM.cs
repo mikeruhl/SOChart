@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chart
+namespace Chart.Code
 {
     public class ChartDataMVVM: Notifier
     {
