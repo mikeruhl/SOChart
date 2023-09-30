@@ -20,9 +20,15 @@ namespace Chart
     /// </summary>
     public partial class MainWindow : Window
     {
+        ChartDataMVVM chartData;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            chartData = new ChartDataMVVM();
+
+            DataContext = chartData;
         }
     }
 }
